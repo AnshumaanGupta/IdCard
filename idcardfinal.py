@@ -67,7 +67,7 @@ def draw_multiline_text_l(draw, text, position, font, max_width, fill="black"):
 
 def icardfront(name, new_roll, old_roll, branch,validity, image_path, front_output_path):
     # Load base ID card template
-    id_card = Image.open("card1.png")  # Ensure this path points to your ID card template
+    id_card = Image.open("card1.png")  
 
     # Load user's image
     user_image = Image.open(image_path)  # Replace with the actual path to user's image
