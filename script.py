@@ -1,4 +1,5 @@
 #pip install pillow==9.5.0
+#pip install python-barcode
 import pandas as pd
 from datetime import datetime
 from PIL import Image, ImageDraw, ImageFont
@@ -67,7 +68,7 @@ def draw_multiline_text_l(draw, text, position, font, max_width, fill="black"):
 
 def icardfront(name, new_roll, old_roll, branch,validity, image_path, front_output_path):
     # Load base ID card template
-    id_card = Image.open("card1.png")  
+    id_card = Image.open("card1.png")  # Ensure this path points to your ID card template
 
     # Load user's image
     user_image = Image.open(image_path)  # Replace with the actual path to user's image
@@ -123,11 +124,11 @@ def icardfront(name, new_roll, old_roll, branch,validity, image_path, front_outp
 
     # Write Valid Upto on ID card
     font = ImageFont.truetype("arial.ttf", 34)
-    id_width, _ = font.getsize("Valid Upto : Jul 2022 to " + validity)
+    id_width, _ = font.getsize("Valid Upto :" + validity)
     id_start_pos = (id_card.width - id_width) // 2 
-    draw.text((id_start_pos, 706),"Valid Upto : Jul 2022 to " + validity, fill="black", font=font)
-    draw.text((id_start_pos+0.3, 706+0.3), "Valid Upto : Jul 2022 to " + validity, fill="black", font=font)
-    draw.text((id_start_pos-0.3, 706-0.3), "Valid Upto : Jul 2022 to " + validity, fill="black", font=font)
+    draw.text((id_start_pos, 706),"Valid Upto :" + validity, fill="black", font=font)
+    draw.text((id_start_pos+0.3, 706+0.3), "Valid Upto :" + validity, fill="black", font=font)
+    draw.text((id_start_pos-0.3, 706-0.3), "Valid Upto :" + validity, fill="black", font=font)
 
     # Save the generated ID card
     id_card.save(front_output_path)
